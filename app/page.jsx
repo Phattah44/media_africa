@@ -1,9 +1,42 @@
+'use client';
+
+import LoginModal from '@components/loginModal/page';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const loginAction = () => {
+    console.log(email, password);
+    const userData = { email, password };
+
+    localStorage.setItem('token-info', JSON.stringify(userData));
+    setEmail('');
+    setPassword('');
+    setIsLoggedIn(true);
+  };
+
+  const logoutAction = (e) => {
+    e.preverDefault();
+    localStorage.removeItem('token-info');
+    setIsLoggedIn(fault);
+  };
+
   return (
     <section>
-      <div className='flex flex-col items-center md:flex-row md:h-screen lg:w-full'>
+      <div className='flex flex-col items-center md:flex-row md:h-screen lg:w-full relative'>
         <div className='flex flex-col items-center justify-center w-full h-full md:w-1/2 bg-[#040C5E] p-4 lg:w-full'>
           <img
             src='/mawhite.png'
@@ -31,6 +64,8 @@ const Login = () => {
                 type='email'
                 id='email'
                 placeholder='Enter your email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className=' w-full px-4 py-3 mt-1 mb-4'
               />
             </div>
@@ -45,6 +80,8 @@ const Login = () => {
                 type='password'
                 id='password'
                 placeholder='Enter your password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className='w-full px-4 py-3 mt-1'
               />
             </div>
@@ -55,7 +92,14 @@ const Login = () => {
               Forgot Password?
             </Link>
             <div className='mt-5'>
-              <button className='w-full px-4 py-3 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-button-color  hover: focus:outline-none focus:bg-gray-600'>
+              <button
+                type='button'
+                onClick={() => {
+                  loginAction();
+                  handleOpenModal();
+                }}
+                className='w-full px-4 py-3 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-button-color  hover: focus:outline-none focus:bg-gray-600'
+              >
                 Log In
               </button>
             </div>
@@ -85,6 +129,7 @@ const Login = () => {
             />
           </Link>
         </div>
+        <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </section>
   );

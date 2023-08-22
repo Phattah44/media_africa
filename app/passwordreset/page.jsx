@@ -1,3 +1,4 @@
+import LoginModal from '@components/loginModal/page';
 import Link from 'next/link';
 
 export default function Passwordreset() {
@@ -65,6 +66,7 @@ export default function Passwordreset() {
             />
           </Link>
         </div>
+        <LoginModal />
       </div>
     </section>
   );

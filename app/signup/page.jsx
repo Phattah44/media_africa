@@ -1,3 +1,4 @@
+import LoginModal from '@components/loginModal/page';
 import Link from 'next/link';
 
 export default function Signup() {
@@ -91,6 +92,7 @@ export default function Signup() {
             />
           </Link>
         </div>
+        <LoginModal />
       </div>
     </section>
   );
