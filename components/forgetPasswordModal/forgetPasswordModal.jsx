@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import useVerification from './useVerification';
+import useVerification from '@components/loginModal/useVerification';
 
-export default function LoginModal({ isOpen, onClose }) {
+export default function ForgetPasswordModal({ isOpen, onClose }) {
   const { code, inputStates, inputClass, handleChange, handleKeyDown } =
     useVerification(4);
 
@@ -33,7 +33,7 @@ export default function LoginModal({ isOpen, onClose }) {
           <div className='w-1/3 bg-[#040C5E] m-auto items-center absolute top-[25%] left-[32%] flex flex-col p-12'>
             <img src='/mawhite.png' width='150px' className='' />
             <p className='my-4 text-center text-xl font-semibold text-white'>
-              Account Verification
+              Forgot Password
             </p>
             <p className='text-center text-xs text-white'>
               please enter the OTP sent to <br />
@@ -68,12 +68,12 @@ export default function LoginModal({ isOpen, onClose }) {
       {page === 'confirm-page' && (
         <div className='w-1/3 bg-[#040C5E] m-auto items-center absolute top-[25%] left-[32%] flex flex-col p-12'>
           <p className='my-4 text-center text-xl font-semibold text-white'>
-            Account Verification
+            Password Reset
           </p>
           <p className='text-white text-center w-2/3'>
-            Congratulations your account has been successfully verified!
+            Congratulations your password has been successfully reset!
           </p>
-          <img src='/success.png' className='mx-6' width='250px' />
+          <img src='/resetpassword.png' className='mx-6' width='250px' />
 
           <button className='text-xs px-3 py-4 text-white bg-button-color w-10/12 rounded-md'>
             OK

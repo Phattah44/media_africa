@@ -1,7 +1,39 @@
+'use client';
+
 import LoginModal from '@components/loginModal/page';
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Signup() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const loginAction = () => {
+    console.log(email, password);
+    const userData = { email, password };
+
+    localStorage.setItem('token-info', JSON.stringify(userData));
+    setEmail('');
+    setPassword('');
+    setIsLoggedIn(true);
+  };
+
+  const logoutAction = (e) => {
+    e.preverDefault();
+    localStorage.removeItem('token-info');
+    setIsLoggedIn(fault);
+  };
+
   return (
     <section>
       <div className='flex flex-col items-center md:flex-row md:h-screen lg:w-full'>
@@ -31,6 +63,8 @@ export default function Signup() {
               <input
                 type='email'
                 id='email'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder='Enter your email'
                 className=' w-full px-4 py-3 mt-1 mb-4'
               />
@@ -45,6 +79,8 @@ export default function Signup() {
               <input
                 type='password'
                 id='password'
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 placeholder='Enter your password'
                 className='w-full px-4 py-3 mt-1'
               />
@@ -56,7 +92,14 @@ export default function Signup() {
               Forgot Password?
             </Link>
             <div className='mt-5'>
-              <button className='w-full px-4 py-3 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-button-color  hover: focus:outline-none focus:bg-gray-600'>
+              <button
+                type='button'
+                onClick={() => {
+                  loginAction();
+                  handleOpenModal();
+                }}
+                className='w-full px-4 py-3 tracking-wide text-white transition-colors duration-200 transform rounded-md bg-button-color  hover: focus:outline-none focus:bg-gray-600'
+              >
                 Sign Up
               </button>
             </div>
@@ -92,7 +135,7 @@ export default function Signup() {
             />
           </Link>
         </div>
-        <LoginModal />
+        <LoginModal isOpen={isModalOpen} onClose={handleCloseModal} />
       </div>
     </section>
   );
