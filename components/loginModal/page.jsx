@@ -75,7 +75,10 @@ export default function LoginModal({ isOpen, onClose }) {
           </p>
           <img src='/success.png' className='mx-6' width='250px' />
 
-          <button className='text-xs px-3 py-4 text-white bg-button-color w-10/12 rounded-md'>
+          <button
+            onClick={() => onClose()}
+            className='text-xs px-3 py-4 text-white bg-button-color w-10/12 rounded-md'
+          >
             OK
           </button>
         </div>
