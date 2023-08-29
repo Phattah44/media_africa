@@ -1,14 +1,13 @@
-import PagesLayout from '@components/pagesLayout/pagesLayout';
-import React from 'react';
+import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 
-const InfluencerMarketing = () => {
+const PressRelease = () => {
   return (
-    <PagesLayout>
+    <LaunchCampaignLayout pageTitle='Influencer Marketing'>
       <div>
         <h1>Influencer Marketing</h1>
       </div>
-    </PagesLayout>
+    </LaunchCampaignLayout>
   );
 };
 
-export default InfluencerMarketing;
+export default PressRelease;

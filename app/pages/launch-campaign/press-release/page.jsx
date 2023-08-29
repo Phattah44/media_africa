@@ -1,13 +1,22 @@
-import PagesLayout from '@components/pagesLayout/pagesLayout';
-import React from 'react';
+import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 
 const PressRelease = () => {
   return (
-    <PagesLayout>
+    <LaunchCampaignLayout pageTitle='Press releases and Sponsored articles'>
       <div>
-        <h1>Press Release</h1>
+        <form>
+          <div>
+            <label>Where do you want to launch</label>
+            <input />
+          </div>
+          <div>
+            <label>Select Website</label>
+            <input />
+          </div>
+          <p>Select Website/Blog Details</p>
+        </form>
       </div>
-    </PagesLayout>
+    </LaunchCampaignLayout>
   );
 };
 

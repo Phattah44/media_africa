@@ -1,14 +1,13 @@
-import PagesLayout from '@components/pagesLayout/pagesLayout';
-import React from 'react';
+import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 
-const BannerAdvertisement = () => {
+const PressRelease = () => {
   return (
-    <PagesLayout>
+    <LaunchCampaignLayout pageTitle='Banner Advertisement'>
       <div>
         <h1>Banner Advertisement</h1>
       </div>
-    </PagesLayout>
+    </LaunchCampaignLayout>
   );
 };
 
-export default BannerAdvertisement;
+export default PressRelease;

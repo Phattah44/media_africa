@@ -1,14 +1,13 @@
-import PagesLayout from '@components/pagesLayout/pagesLayout';
-import React from 'react';
+import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 
-const OfflinePromotion = () => {
+const PressRelease = () => {
   return (
-    <PagesLayout>
+    <LaunchCampaignLayout pageTitle='Offline Promotion'>
       <div>
-        <h1>Offline Promotion</h1>
+        <h1>Offline promotion</h1>
       </div>
-    </PagesLayout>
+    </LaunchCampaignLayout>
   );
 };
 
-export default OfflinePromotion;
+export default PressRelease;

@@ -1,14 +1,13 @@
-import PagesLayout from '@components/pagesLayout/pagesLayout';
-import React from 'react';
+import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 
-const SocialMediaMarketing = () => {
+const PressRelease = () => {
   return (
-    <PagesLayout>
+    <LaunchCampaignLayout pageTitle='Social Media Marketing'>
       <div>
         <h1>Social Media Marketing</h1>
       </div>
-    </PagesLayout>
+    </LaunchCampaignLayout>
   );
 };
 
-export default SocialMediaMarketing;
+export default PressRelease;
