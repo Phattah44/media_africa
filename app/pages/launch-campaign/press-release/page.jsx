@@ -3,6 +3,7 @@
 import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 import { useState } from 'react';
 import WebsiteCard from './websiteCard';
+import { RiUpload2Fill } from 'react-icons/ri';
 
 const PressRelease = () => {
   const [pressRelease, setPressRelease] = useState({
@@ -29,7 +30,7 @@ const PressRelease = () => {
               value={pressRelease.launchCountry}
               onChange={handleChange}
               name='launchCountry'
-              className='bg-white items-center gap-3 w-3/5 p-2 rounded-lg'
+              className='bg-white items-center gap-3 w-3/5 p-2 rounded-lg text-gray-300'
             >
               <option value=''>Choose Location to launch camapign</option>
               <option value='angola'>Angola</option>
@@ -51,7 +52,7 @@ const PressRelease = () => {
               value={pressRelease.launchWebsite}
               onChange={handleChange}
               name='launchWebsite'
-              className='bg-white items-center gap-3 w-3/5 p-2 rounded-lg'
+              className='bg-white items-center gap-3 w-3/5 p-2 rounded-lg text-gray-300'
             >
               <option value=''>
                 Select Website or Blogs to launch campaign
@@ -100,7 +101,7 @@ const PressRelease = () => {
                 value={pressRelease.launchDuration}
                 name='launchDuration'
                 onChange={handleChange}
-                className='bg-transparent p-2 my-3 w-4/5 border-solid border-[#040C5E] border-2'
+                className='bg-transparent p-2 my-3 w-4/5 border-solid border-[#040C5E] border-2 text-gray-400'
               >
                 <option value=''>select duration</option>
                 <option value='1week'>1 Week</option>
@@ -111,15 +112,17 @@ const PressRelease = () => {
             </div>
             <div className='flex flex-col'>
               <p className='text-[#040C5E] font-semibold'>Your content</p>
-              <div className='flex'>
+              <div className='flex items-center'>
                 <input
                   type='file'
                   placeholder='Choose file'
                   id='launchContent'
                   name='launchContent'
-                  className='bg-transparent p-2 my-3 w-4/5 border-solid border-[#040C5E] border-2'
+                  className='block text-[#040C5E] bg-transparent p-1 my-3 w-4/5 border-dashed border-[#040C5E] border-2 file:mr-4 file:px-6  file:text-md file:font-bold file:border-0 file:bg-transparent file:text-[#040C5E] hover:file:cursor-pointer'
                 />
-                <p>icon</p>
+                <button className='bg-[#040C5E] h-10 w-14'>
+                  <RiUpload2Fill className=' text-white m-auto' />
+                </button>
               </div>
               <p className='text-[#040C5E] font-thin text-xs'>
                 (Doc, PDF, Max size 10mb)
