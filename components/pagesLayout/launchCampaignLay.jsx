@@ -3,11 +3,11 @@ import LaunchCamNav from './launchCamNav/page';
 import Link from 'next/link';
 const LaunchCampaignLayout = ({ children, pageTitle }) => {
   return (
-    <div className='flex flex-row w-full h-full'>
+    <div className='flex flex-row w-full h-[100vh]'>
       <Sidebar />
-      <div className='bg-[#F4F6FD] w-full h-[100vh] relative'>
+      <div className='bg-[#F4F6FD] w-full h-[100vh] relative overflow-y-scroll'>
         <LaunchCamNav pageTitle={pageTitle} />
-        <div>{children}</div>
+        <div className='h-[100vh] overflow-y-scroll'>{children}</div>
         <Link href='/support'>
           <img
             src='/support.png'

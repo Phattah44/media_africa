@@ -3,9 +3,9 @@ import Navbar from './navbar/Navbar';
 import Link from 'next/link';
 const PagesLayout = ({ children }) => {
   return (
-    <div className='flex flex-row w-full h-full'>
+    <div className='flex flex-row w-full h-full '>
       <Sidebar />
-      <div className='bg-[#F4F6FD] w-full h-[100vh] relative'>
+      <div className='bg-[#F4F6FD] w-full h-[100vh] relative overflow-y-scroll'>
         <Navbar />
         <div>{children}</div>
         <Link href='/support'>

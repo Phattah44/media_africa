@@ -3,23 +3,21 @@
 import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
 import { useState } from 'react';
 import { influencerData } from './influencerData';
+import Influencer from './influencer';
 
 const InfluencerMarketing = () => {
   console.log(influencerData);
   const [influencerCamp, setInfluencerCamp] = useState({
     launchCountry: '',
     launchDuration: '',
-    selectedInfluencer: [],
   });
-  const [isSelected, setIsSelected] = useState(false);
+  const [selectedInfluencers, setSelectedInfluencers] = useState([]);
+  const [selectedSocialMedia, setSelectedSocialMedia] = useState(null);
   const handleChange = (e) => {
     e.target.value;
   };
-  const handleSelect = () => {
-    setIsSelected(true);
-  };
-  const toggleSelect = () => {
-    setIsSelected(!isSelected);
+  const taggedInfluencer = (socialMedia) => {
+    setSelectedSocialMedia(socialMedia);
   };
 
   return (
@@ -52,59 +50,86 @@ const InfluencerMarketing = () => {
             Choose Preferred Social Media
           </p>
           <div className='flex flex-wrap justify-between w-full'>
-            <button className='text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32'>
+            <button
+              type='button'
+              className={`text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32 ${
+                selectedSocialMedia === 'instagram'
+                  ? 'bg-[#040C5E] text-white'
+                  : ''
+              }`}
+              onClick={() => taggedInfluencer('instagram')}
+            >
               Instagram
             </button>
-            <button className='text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32'>
+            <button
+              type='button'
+              className={`text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32 ${
+                selectedSocialMedia === 'tiktok'
+                  ? 'bg-[#040C5E] text-white'
+                  : ''
+              }`}
+              onClick={() => taggedInfluencer('tiktok')}
+            >
               Tiktok
             </button>
-            <button className='text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32'>
+            <button
+              type='button'
+              className={`text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32 ${
+                selectedSocialMedia === 'youtube'
+                  ? 'bg-[#040C5E] text-white'
+                  : ''
+              }`}
+              onClick={() => taggedInfluencer('youtube')}
+            >
               Youtube
             </button>
-            <button className='text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32'>
+            <button
+              type='button'
+              className={`text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32 ${
+                selectedSocialMedia === 'facebook'
+                  ? 'bg-[#040C5E] text-white'
+                  : ''
+              }`}
+              onClick={() => taggedInfluencer('facebook')}
+            >
               Facebook
             </button>
-            <button className='text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32'>
+            <button
+              type='button'
+              className={`text-[#040C5E] font-semibold text-sm border-solid bg-transparent border-2 border-[#040C5E] py-2 px-4 rounded-lg active:text-white active:bg-[#040C5E] w-32 ${
+                selectedSocialMedia === 'twitter'
+                  ? 'bg-[#040C5E] text-white'
+                  : ''
+              }`}
+              onClick={() => taggedInfluencer('twitter')}
+            >
               Twitter
             </button>
           </div>
           <p className='text-[#040C5E] font-semibold'>Select Influencer</p>
           <div className='flex flex-wrap w-full grid-cols-5 gap-5'>
-            {influencerData.map((data) => {
-              return (
-                <div key={data.id}>
-                  <div
-                    className='flex flex-col bg-[#040C5E] items-center rounded-lg relative '
-                    onClick={() => {
-                      data.isSelected = !data.isSelected;
-                      console.log(data);
-                    }}
-                  >
-                    <div className='absolute right-1 top-1'>
-                      {data.isSelected === false ? (
-                        <div className='h-4 w-4 rounded-2xl border-white border-2 '></div>
-                      ) : (
-                        <img src='/select.svg' className='w-4 h-4' />
-                      )}
-                    </div>
-                    <img src={data.image} className='p-2 w-[140px] mt-3' />
-                    <div className='p-2'>
-                      <p className='text-white font-semibold text-sm'>
-                        {data.name}
-                      </p>
-                      <p className='text-white text-xs'>{data.handle}</p>
-                      <p className='text-white text-xs'>
-                        {data.followers} Followers
-                      </p>
-                      <p className='text-white text-xs'>
-                        {data.views} views per post{' '}
-                        <span className='font-thin'>(est)</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {influencerData
+              .filter((data) => {
+                // Filter influencers based on the selected social media
+                return selectedSocialMedia
+                  ? data.social === selectedSocialMedia
+                  : true;
+              })
+              .map((data) => {
+                return (
+                  <Influencer
+                    key={data.id}
+                    image={data.image}
+                    id={data.id}
+                    followers={data.followers}
+                    social={data.social}
+                    isSelected={data.isSelected}
+                    isCard={data.isCart}
+                    views={data.views}
+                    setSelectedInfluencers={setSelectedInfluencers}
+                  />
+                );
+              })}
           </div>
 
           <div className='flex flex-col w-1/2'>

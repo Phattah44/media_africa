@@ -1,10 +1,13 @@
 import LaunchCampaignLayout from '@components/pagesLayout/launchCampaignLay';
+import SocialMediaOption from './socialMediaOption';
 
 const PressRelease = () => {
   return (
     <LaunchCampaignLayout pageTitle='Social Media Marketing'>
       <div>
-        <h1>Social Media Marketing</h1>
+        <div>
+          <SocialMediaOption image={'/twittertrend.png'} />
+        </div>
       </div>
     </LaunchCampaignLayout>
   );
